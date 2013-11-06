@@ -114,7 +114,7 @@ def renderView(request):
         data.extend(seriesList)
 
     if useCache:
-      cache.set(dataKey, data, cacheTimeout)
+      cache.add(dataKey, data, cacheTimeout)
 
     format = requestOptions.get('format')
     if format == 'csv':
