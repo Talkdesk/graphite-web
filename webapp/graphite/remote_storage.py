@@ -103,7 +103,7 @@ class RemoteNode:
     self.__isLeaf = isLeaf
 
 
-  def fetch(self, startTime, endTime):
+  def fetch(self, startTime, endTime, now=None):
     if not self.__isLeaf:
       return []
 
