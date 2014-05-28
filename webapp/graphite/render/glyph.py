@@ -18,7 +18,6 @@ from datetime import datetime, timedelta
 from urllib import unquote_plus
 from ConfigParser import SafeConfigParser
 from django.conf import settings
-from django.utils.timezone import get_current_timezone
 from graphite.render.datalib import TimeSeries
 from graphite.util import json
 
@@ -1330,7 +1329,7 @@ class LineGraph(Graph):
     if self.userTimeZone:
       tzinfo = pytz.timezone(self.userTimeZone)
     else:
-      tzinfo = get_current_timezone()
+      tzinfo = pytz.timezone(settings.TIME_ZONE)
 
     self.start_dt = datetime.fromtimestamp(self.startTime, tzinfo)
     self.end_dt = datetime.fromtimestamp(self.endTime, tzinfo)
