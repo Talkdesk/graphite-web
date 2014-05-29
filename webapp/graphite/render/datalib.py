@@ -216,9 +216,9 @@ CarbonLink = CarbonLinkPool(hosts, settings.CARBONLINK_TIMEOUT)
 # Data retrieval API
 def fetchData(requestContext, pathExpr):
   seriesList = []
-  startTime = requestContext['startTime']
-  endTime = requestContext['endTime']
-  now = requestContext['now']
+  startTime = requestContext.get('startTime')
+  endTime = requestContext.get('endTime')
+  now = requestContext.get('now', time.time())
 
   if requestContext['localOnly']:
     store = LOCAL_STORE
