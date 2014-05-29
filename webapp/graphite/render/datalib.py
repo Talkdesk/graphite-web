@@ -15,6 +15,7 @@ limitations under the License."""
 import socket
 import struct
 import time
+from datetime import datetime
 from django.conf import settings
 from graphite.logger import log
 from graphite.storage import STORE, LOCAL_STORE
@@ -218,7 +219,7 @@ def fetchData(requestContext, pathExpr):
   seriesList = []
   startTime = requestContext.get('startTime')
   endTime = requestContext.get('endTime')
-  now = requestContext.get('now', time.time())
+  now = requestContext.get('now', datetime.now())
 
   if requestContext['localOnly']:
     store = LOCAL_STORE
